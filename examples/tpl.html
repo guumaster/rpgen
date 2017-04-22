@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HTML Tag example</title>
+  <!--<script src="//unpkg.com/@guumaster/rpgen" charset="utf-8"></script>-->
+  <script src="/rpgen.min.js" charset="utf-8"></script>
+</head>
+<body>
+<button onclick="regenerate()">+</button>
+<pre id="result"></pre>
+<template id="demo">
+  ;@tpl|main
+  - [lines]
+  - [roll]
+  - [roll_spanish]
+
+  ;lines
+  line 1 is random
+  line 2 is awesome
+  line 3 is sad
+
+  ;roll
+  1d20 roll: [1d20]
+
+  ;roll_spanish
+  4d6 in spanish: "[4d6|num1]"
+</template>
+</body>
+<script type="text/javascript">
+  var generator = rpgen.fromTag('demo')
+  var $out = document.getElementById('result')
+
+  function regenerate() {
+    $out.innerHTML = generator.generate();
+  }
+  regenerate()
+</script>
+</html>

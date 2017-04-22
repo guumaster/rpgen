@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue example</title>
+  <script src="//unpkg.com/vue" charset="utf-8"></script>
+  <!--<script src="//unpkg.com/@guumaster/rpgen" charset="utf-8"></script>-->
+  <script src="/rpgen.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+  <button @click="regenerate">+</button>
+  <pre>{{text}}</pre>
+</div>
+<template id="demo">
+  ;@tpl|main
+  - [lines]
+  - [roll]
+  - [roll_spanish]
+
+  ;lines
+  line 1 is random
+  line 2 is awesome
+  line 3 is sad
+
+  ;roll
+  1d20 roll: [1d20]
+
+  ;roll_spanish
+  4d6 in spanish: "[4d6|num1]"
+</template>
+</body>
+<script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    created () {
+      this.generator =  rpgen.fromHtmlElement('demo')
+      this.regenerate()
+    },
+    data: {
+      rawText: ''
+    },
+    computed: {
+      text: {
+        get () {
+          return this.rawText
+        },
+        set (val) {
+          this.rawText = val
+        }
+      }
+    },
+    methods: {
+      regenerate () {
+        this.text = this.generator.generate()
+      }
+    }
+  })
+
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue example</title>
+  <script src="//unpkg.com/vue" charset="utf-8"></script>
+  <!--<script src="//unpkg.com/@guumaster/rpgen" charset="utf-8"></script>-->
+  <script src="/rpgen.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+<div id="app">
+  <input v-model="custom" :placeholder="placeholder"/>
+  <button @click="customRoll">roll</button>
+  <br />
+  <button @click="roll">roll best 3 of 4d6+1</button>
+  <br />
+  <h3>Roll: {{total}}</h3>
+  <br />
+  <hr />
+  <h4>Log:</h4>
+  <pre>{{log}}</pre>
+
+</div>
+</body>
+<script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    created () {
+      this.roller =  rpgen.roller.create(this.baseRoll)
+      this.roll()
+    },
+    data: {
+      baseRoll: 'best 3 of 4d6+1',
+      placeholder: 'Write your roller. ex: 2d8',
+      custom: '',
+      rawTotal: '',
+      rawLog: ''
+    },
+    watch: {
+      custom: {
+        handler(val) {
+          this.custom = val
+        }
+      }
+    },
+    computed: {
+      total: {
+        get () {
+          return this.rawTotal
+        },
+        set (val) {
+          this.rawTotal = val
+        }
+      },
+      log: {
+        get () {
+          return this.rawLog.join('\n')
+        },
+        set (val) {
+          this.rawLog = val
+        }
+      }
+    },
+    methods: {
+      roll () {
+        const roll = this.roller(true)
+        this.total = roll.total
+        this.log = roll.log
+      },
+      customRoll () {
+        const roller = rpgen.roller.create(this.custom || this.baseRoll)
+        const roll = roller(true)
+        this.total = roll.total
+        this.log = roll.log
+      }
+    }
+  })
+</script>
+</html>

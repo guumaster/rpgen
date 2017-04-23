@@ -34,7 +34,7 @@
   var app = new Vue({
     el: '#app',
     created () {
-      this.generator =  rpgen.fromHtmlElement('demo')
+      this.generator =  rpgen.generator.fromHtmlElement('demo')
       this.regenerate()
     },
     data: {

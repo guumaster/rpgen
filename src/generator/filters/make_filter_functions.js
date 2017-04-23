@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape,no-cond-assign */
 
 import { FILTERS } from './filters'
-import { id } from './utils'
+import { id } from '../../functions'
 
 const generatorRE = /([^\[]*)\[(?:([^@\]]+)@)?([^\[\]|]*)(?:\|([^\[\]]*))?\]/gm
 const lastpartRE = /((?:.+)\])?(.*)$/

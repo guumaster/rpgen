@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape,no-cond-assign */
 
-import { isDiceRoll, makeRoller } from './dice_roller'
-import { range } from './utils'
+import { isDiceRoll, sumRoller } from '../../roller/simple'
+import { range } from '../../functions'
 
 export default (mod, gen) => {
   if (!mod) {
@@ -18,7 +18,7 @@ export default (mod, gen) => {
 
   // [3d6@string] repeat diced dX
   if (match = isDiceRoll(mod)) {
-    let roller = makeRoller(mod)
+    let roller = sumRoller(mod)
     return () => range(roller()).map(() => () => gen()).reduce((merged, fn) => `${merged}${fn()} `, '')
   }
 
@@ -28,7 +28,7 @@ export default (mod, gen) => {
 
     if (!total) return gen
 
-    let roller = makeRoller(`1d${total}`)
+    let roller = sumRoller(`1d${total}`)
     return () => {
       return roller() <= prob ? gen() : ''
     }
@@ -46,7 +46,7 @@ export default (mod, gen) => {
       return gen
     }
 
-    let roller = makeRoller('1d100')
+    let roller = sumRoller('1d100')
     return () => roller() <= prob ? gen() : ''
   }
 

@@ -1,10 +1,10 @@
 import merge from 'lodash.merge'
 
 import {getDefaultKey} from './default_key'
-import parseContent from '../parser'
-import makeSelectors from '../selectors'
+import parseContent from './parser'
+import makeSelectors from './selectors'
 
-export default class RpGen {
+export default class Generator {
   constructor () {
     this.data = {sources: {}, tpls: {}}
   }

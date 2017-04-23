@@ -1,11 +1,12 @@
 /* eslint-disable no-useless-escape,no-cond-assign */
 
+import {rand} from '../../functions'
 import {
   getModdedGenerator,
   getFilteredGenerator,
   isDiceRoll,
   makeFilteredRoller
-} from './filters'
+} from '../filters'
 
 export default (data, selectors) => {
   return Object.keys(data.tpls).reduce((obj, tpl) => {
@@ -25,11 +26,12 @@ const inlineTableRE = /\[(?:([^@\]]+)@)?>(([^;\@\[\]\|]+;*)+)\]/g
 const hasMoreSelectors = str => str.match(generatorRE)
 
 const makeInlineGenerator = str => {
-  const [,, inline] = inlineTableRE.exec(str)
+  const [, , inline] = inlineTableRE.exec(str)
   const options = inline.split(/;/)
+  const size = options.length
 
   return () => {
-    return options[Math.floor(Math.random() * options.length)]
+    return options[rand(0, size)]
   }
 }
 

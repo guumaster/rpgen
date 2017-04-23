@@ -1,8 +1,9 @@
-import {rand, range, sum} from './utils'
+import {rand, range, sum} from '../functions'
 
 export const isDiceRoll = str => str.match(/([0-9]*)?d([0-9]+)(?:([+\-*/])([0-9]+))?/)
 export const rollDice = (sides, amount) => sum(range(amount || 1).map(() => rand(1, sides)))
-export const makeRoller = str => {
+
+export const sumRoller = str => {
   const parts = isDiceRoll(str)
   if (!parts) {
     return 0

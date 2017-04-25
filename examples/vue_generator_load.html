@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue example</title>
+  <script src="//unpkg.com/vue" charset="utf-8"></script>
+  <!--<script src="//unpkg.com/@guumaster/rpgen" charset="utf-8"></script>-->
+  <script src="/rpgen.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+  <button @click="regenerate">+</button>
+  <pre>{{text}}</pre>
+</div>
+</body>
+<script type="text/javascript">
+
+  var app = new Vue({
+    el: '#app',
+    created () {
+      rpgen.generator
+        .load('ByUXwwSRg')
+        .then(gen => {
+          this.generator = gen
+          this.regenerate()
+        })
+    },
+    data: {
+      rawText: ''
+    },
+    computed: {
+      text: {
+        get () {
+          return this.rawText
+        },
+        set (val) {
+          this.rawText = val
+        }
+      }
+    },
+    methods: {
+      regenerate () {
+        this.text =   this.generator.generate()
+      }
+    }
+  })
+
+
+</script>
+</html>

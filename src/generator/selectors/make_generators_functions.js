@@ -30,9 +30,7 @@ const makeInlineGenerator = str => {
   const options = inline.split(/;/)
   const size = options.length
 
-  return () => {
-    return options[rand(0, size)]
-  }
+  return () => options[rand(0, size - 1)]
 }
 
 export const execReplacement = (str, selectors, fromContext, recursive) => {

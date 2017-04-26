@@ -12,5 +12,7 @@ export const fromHtmlElement = (id) => {
 
   if (!el) throw new Error(`Element with id ${id} not found`)
 
-  return createGenerator(el.innerHTML)
+  const txt = document.createElement('textarea')
+  txt.innerHTML = el.innerHTML
+  return createGenerator(txt.value)
 }

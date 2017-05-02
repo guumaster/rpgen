@@ -1,6 +1,6 @@
 {
   "name": "@guumaster/rpgen",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Another RPG random generator engine",
   "author": "guumaster <guuweb@gmail.com>",
   "main": "lib/rpgen.min.js",

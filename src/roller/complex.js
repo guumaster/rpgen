@@ -23,12 +23,12 @@ export const createRoller = (str, {fn, reduced = true, debug = false, repeat} = 
     if (isFunction(fn)) {
       fn(result)
     }
-    return doExpand ? result : result.total
+    return doExpand ? Object.assign({}, result) : result.total
   }
   rollerFunction.toJSON = toJSON(rollerObject)
 
   if (repeat) {
-    return (expand) => repeatRoll(repeat, () => rollerFunction(expand))
+    return (expand) => repeatRoll(repeat, rollerFunction, expand)
   }
   return rollerFunction
 }

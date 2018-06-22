@@ -1,12 +1,12 @@
-import merge from 'lodash.merge'
+import { merge } from 'lodash'
 
-import {getDefaultKey} from './default_key'
+import { getDefaultKey } from './default_key'
 import parseContent from './parser'
 import makeSelectors from './selectors'
 
 export default class Generator {
   constructor () {
-    this.data = {sources: {}, tpls: {}}
+    this.data = { sources: {}, tpls: {} }
   }
 
   addContent (str, context = '') {
@@ -16,7 +16,7 @@ export default class Generator {
 
   reset () {
     this.selectors = {}
-    this.data = {sources: {}, tpls: {}}
+    this.data = { sources: {}, tpls: {} }
   }
 
   listSources () {

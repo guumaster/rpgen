@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Simple example</title>
+  <title>Load remote example</title>
   <!-- Uncomment if you are not using webpack-serve -->
   <!--<script src="//unpkg.com/@rolodromo/rpgen" charset="utf-8"></script>-->
   <!--<script src="/rpgen.web.js" charset="utf-8"></script>-->
@@ -12,29 +12,16 @@
 <pre id="result"></pre>
 </body>
 <script type="text/javascript">
-  var generator = rpgen.generator.create(`
-;@tpl|main
-- [lines]
-- [roll]
-- [roll_spanish]
-
-;lines
-line 1 is random
-line 2 is awesome
-line 3 is sad
-
-;roll
-1d20 roll: [1d20]
-
-;roll_spanish
-4d6 in spanish: "[4d6|num1]"
-`)
-
+  var generator
+  rpgen.generator.load('H1JTSHyN')
+    .then(res => {
+      generator = res
+      regenerate()
+    })
   var $out = document.getElementById('result')
 
   function regenerate() {
     $out.innerHTML = generator.generate();
   }
-  regenerate()
 </script>
 </html>

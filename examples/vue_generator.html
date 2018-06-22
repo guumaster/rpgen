@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <title>Vue example</title>
   <script src="//unpkg.com/vue" charset="utf-8"></script>
-  <!--<script src="//unpkg.com/@guumaster/rpgen" charset="utf-8"></script>-->
-  <script src="/rpgen.min.js" charset="utf-8"></script>
+  <!-- Uncomment one if you are not using webpack-serve -->
+  <!--<script src="//unpkg.com/@rolodromo/rpgen" charset="utf-8"></script>-->
+  <!--<script src="/rpgen.web.js" charset="utf-8"></script>-->
 </head>
 <body>
 <div id="app">
@@ -13,28 +14,30 @@
   <pre>{{text}}</pre>
 </div>
 <template id="demo">
-  ;@tpl|main
-  - [lines]
-  - [roll]
-  - [roll_spanish]
 
-  ;lines
-  line 1 is random
-  line 2 is awesome
-  line 3 is sad
-
-  ;roll
-  1d20 roll: [1d20]
-
-  ;roll_spanish
-  4d6 in spanish: "[4d6|num1]"
 </template>
 </body>
 <script type="text/javascript">
   var app = new Vue({
     el: '#app',
     created () {
-      this.generator =  rpgen.generator.fromHtmlElement('demo')
+      this.generator =  rpgen.generator.create(`
+;@tpl|main
+- [lines]
+- [roll]
+- [roll_spanish]
+
+;lines
+line 1 is random
+line 2 is awesome
+line 3 is sad
+
+;roll
+1d20 roll: [1d20]
+
+;roll_spanish
+4d6 in spanish: "[4d6|num1]"
+`)
       this.regenerate()
     },
     data: {

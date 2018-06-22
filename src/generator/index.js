@@ -1,4 +1,3 @@
-
 import Generator from './generator_class'
 
 export const createGenerator = (str) => {

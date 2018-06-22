@@ -1,4 +1,3 @@
-
 export { default as getModdedGenerator } from './make_mods_functions'
 export { default as getFilteredGenerator } from './make_filter_functions'
 export { default as makeFilteredRoller } from './dice_roller_filtered'

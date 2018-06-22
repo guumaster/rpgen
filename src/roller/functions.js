@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import {composeAll, id, range, rand, sum} from '../functions'
+import { composeAll, id, rand, range, sum } from '../functions'
 
 export const take = (x, arr) => arr.slice(0, x)
 export const dice = x => () => rand(1, x)
@@ -19,7 +19,7 @@ export const parser = str => {
     .map((i) => i.replace(/ +/g, ''))
     .reduce((a, b) => Number(a) + Number(b), 0)
   const sign = mod >= 0 ? '+' : '-'
-  return {input, type, take, dice, sides, sign, mod}
+  return { input, type, take, dice, sides, sign, mod }
 }
 
 export const composeRoll = obj => composeAll([

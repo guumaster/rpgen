@@ -1,4 +1,3 @@
-
 const UNIDADES = '|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve'.split('|')
 const DECENA_BAJA = 'diez|once|doce|trece|catorce|quince'.split('|')
 const DECENA = '|||treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa'.split('|')

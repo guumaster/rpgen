@@ -1,12 +1,7 @@
 /* eslint-disable no-useless-escape,no-cond-assign */
 
-import {rand} from '../../functions'
-import {
-  getModdedGenerator,
-  getFilteredGenerator,
-  isDiceRoll,
-  makeFilteredRoller
-} from '../filters'
+import { rand } from '../../functions'
+import { getFilteredGenerator, getModdedGenerator, isDiceRoll, makeFilteredRoller } from '../filters'
 
 export default (data, selectors) => {
   return Object.keys(data.tpls).reduce((obj, tpl) => {

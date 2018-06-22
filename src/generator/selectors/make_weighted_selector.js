@@ -25,7 +25,7 @@ const createWeightedSelector = (table, selectors) => {
     let key = Math.random()
     let index = 0
 
-    for (;index < weighted.length; index++) {
+    for (; index < weighted.length; index++) {
       key -= weighted[index]
 
       if (key < 0) {

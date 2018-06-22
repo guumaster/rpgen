@@ -1,4 +1,4 @@
-## RPGen
+## @rolodromo/rpgen
 
 This module is set of tools for RPG games. It contains: 
 
@@ -10,12 +10,12 @@ This module is set of tools for RPG games. It contains:
 You can install it as a node module
 
 ```sh
-$> npm install -S @guumaster/rpgen
+$> npm install -S @rolodromo/rpgen
 ```
 
 Or add it to your HTML directly from `unpkg` CDN: 
 ```html
-<script src="//unpkg.com/@guumaster/rpgen"></script>
+<script src="//unpkg.com/@rolodromo/rpgen"></script>
 ```
 And then is accesible globally as `rpgen` object.
 
@@ -26,7 +26,7 @@ And then is accesible globally as `rpgen` object.
 #### Basic die roller
 
 ```js
-const rpgen = require('@guumaster/rpgen')
+const rpgen = require('@rolodromo/rpgen')
 const myRoller = rpgen.roller.create('best 3 of 4d6+1')
 
 console.log(myRoller()) // output: 16
@@ -38,7 +38,7 @@ console.log(myRoller()) // output: 16
 #### Multi dice roller
 
 ```js
-const rpgen = require('@guumaster/rpgen')
+const rpgen = require('@rolodromo/rpgen')
 const myRoller = rpgen.roller.create('best 3 of 4d6+1', { repeat: 6 })
 
 console.log(myRoller()) // output: [16, 13, 12, 14, 13, 15]

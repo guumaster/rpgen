@@ -1,4 +1,4 @@
-import {rand, range, sum} from '../functions'
+import { rand, range, sum } from '../functions'
 
 export const isDiceRoll = str => str.match(/([0-9]*)?d([0-9]+)(?:([+\-*/])([0-9]+))?/)
 export const rollDice = (sides, amount) => sum(range(amount || 1).map(() => rand(1, sides)))

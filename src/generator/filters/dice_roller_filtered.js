@@ -1,4 +1,3 @@
-
 import { isString } from '../../functions'
 import { sumRoller } from '../../roller/simple'
 import toLetters from './number_to_letters'
